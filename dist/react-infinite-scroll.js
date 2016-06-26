@@ -53,6 +53,13 @@ var InfiniteScroll = function (_React$Component) {
       this.attachScrollListener();
     }
   }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.shouldReset) {
+        this.pageLoaded = this.props.pageStart;
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var props = this.props;
@@ -126,6 +133,7 @@ exports.default = InfiniteScroll;
 InfiniteScroll.PropTypes = {
   pageStart: _react2.default.PropTypes.number,
   hasMore: _react2.default.PropTypes.bool,
+  shouldReset: _react2.default.PropTypes.bool,
   loadMore: _react2.default.PropTypes.func.isRequired,
   threshold: _react2.default.PropTypes.number,
   useWindow: _react2.default.PropTypes.bool
@@ -133,6 +141,7 @@ InfiniteScroll.PropTypes = {
 InfiniteScroll.defaultProps = {
   pageStart: 0,
   hasMore: false,
+  shouldReset: false,
   loadMore: function loadMore() {},
   threshold: 250,
   useWindow: true

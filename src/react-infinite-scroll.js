@@ -21,6 +21,11 @@ export default class InfiniteScroll extends React.Component {
   componentDidUpdate() {
     this.attachScrollListener();
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.shouldReset) {
+      this.pageLoaded = this.props.pageStart;
+    }
+  }
   render() {
     var props = this.props;
     return React.DOM.div(null, props.children, props.hasMore && (props.loader || this._defaultLoader));
@@ -77,6 +82,7 @@ export default class InfiniteScroll extends React.Component {
 InfiniteScroll.PropTypes = {
   pageStart: React.PropTypes.number,
   hasMore: React.PropTypes.bool,
+  shouldReset: React.PropTypes.bool,
   loadMore: React.PropTypes.func.isRequired,
   threshold: React.PropTypes.number,
   useWindow: React.PropTypes.bool
@@ -84,6 +90,7 @@ InfiniteScroll.PropTypes = {
 InfiniteScroll.defaultProps = {
   pageStart: 0,
   hasMore: false,
+  shouldReset: false,
   loadMore: function () {},
   threshold: 250,
   useWindow: true
