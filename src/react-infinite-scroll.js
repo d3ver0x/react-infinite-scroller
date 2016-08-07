@@ -28,7 +28,7 @@ export default class InfiniteScroll extends React.Component {
   }
   render() {
     var props = this.props;
-    return React.DOM.div(null, props.children, props.hasMore && (props.loader || this._defaultLoader));
+    return React.DOM.div(null, props.children, props.hasMore && (props.loader || this._defaultLoader) || props.endOfPage);
   }
   scrollListener() {
     var el = ReactDOM.findDOMNode(this);

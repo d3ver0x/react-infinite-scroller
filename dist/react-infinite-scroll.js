@@ -63,7 +63,7 @@ var InfiniteScroll = function (_React$Component) {
     key: 'render',
     value: function render() {
       var props = this.props;
-      return _react2.default.DOM.div(null, props.children, props.hasMore && (props.loader || this._defaultLoader));
+      return _react2.default.DOM.div(null, props.children, props.hasMore && (props.loader || this._defaultLoader) || props.endOfPage);
     }
   }, {
     key: 'scrollListener',
